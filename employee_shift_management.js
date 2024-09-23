@@ -57,25 +57,20 @@ function calculateTotalHours(employeeName) {
 console.log(calculateTotalHours('David')); // Output: 8
 console.log(calculateTotalHours('Alejandro')); // Output: Alejandro not found.
 
+
 // Task 5 - Create a Function to List Employees with Free Days
 function listAvailableEmployees (day, names) {
     console.log(`Employees availability on ${day}:`);
     
     // Filtering to find employees without shifts for the specified day
     const availableEmployees = employees.filter(employee => {
-     // Verifying if employees have shifts for certain days
         return !employee.shifts.some(shift => shift.day === day);
     });
-
-    // Available employee information
-    if (availableEmployees.length > 0) {
-        availableEmployees.forEach(employee => {
-            console.log(employee.name);
-        });
-    } else {
+        //If a shift is not available, report name
+        if (confirmedShift= 0);
         console.log('No employees are available.');
     }
-}
+
 
 // Example usage of the function
 listAvailableEmployees('Monday'); // Should display Sara and Emily
