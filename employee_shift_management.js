@@ -6,6 +6,7 @@ const employees = [
     { name: 'David', shifts: [{ day: 'Monday', hours: 8 }] },
     { name: 'Emily', shifts: [{ day: 'Friday', hours: 8 }] },
 ];
+console.log (employees);
 //Initialize employees with shift schedules
 
 //Task 2 : Create a Function to Display Employee Shift Details
@@ -19,22 +20,42 @@ function displayEmployeeShifts (employee) {
 
 //Task 3 - Create a Function to Assign a New Shift
 function assignShift (name, day, hours) {
-        const employee = employees.find(employee => employee.name === employeeName);
+    // Name Search
+        const employee = employees.find(emp => emp.name === employeeName);
+    // Employee Message 
         if (!employee) {
             console.log('Employee not found.');
             return;
         }
-        
-        const existingShift = employee.shifts.find(shift => shift.day === day);
-        if (existingShift) {
+     // See if Employee has a shift   
+        const confirmedShift = employee.shifts.find(shift => shift.day === day);
+        if (confirmedShift) {
             console.log(`Error: ${employeeName} is already assigned a shift on ${day}.`);
             return;
         }
-        
-        employee.shifts.push({ day, hours });
 }
 //Create assignShift function
 
+//Task 4 - Create a Function to Calculate Total Hours Worked
+function calculateTotalHours(employeeName) {
+    // Employee Name Search
+    const employee = employees.find(emp => emp.name === employeeName);
+    
+    // Unidentifed Employee Message
+    if (!employee) {
+        const totalHours = employee.shifts.reduce((total, shift)=> total+shift.hours,0);
+        console.log('${employeeName} Full hours worked: ${totalHours}');
+        return totalHours; // Return full hours 
+    } else { 
+        console.log('${employeeName} not found');
+        return 0; // 0 if employee is not found
+    }
+}
+// Create calculateTotalHours function
+
+// Example 
+console.log(calculateTotalHours('David')); // Output: 8
+console.log(calculateTotalHours('Alejandro')); // Output: Alejandro not found.
 
 
 
